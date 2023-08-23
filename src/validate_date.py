@@ -1,6 +1,5 @@
 import re
 
-
 def validate_date(date_input):
     """
     Date validation rules:
@@ -13,5 +12,11 @@ def validate_date(date_input):
     :param date_input: <str> The string containing date to be checked
     :return: True if date_input respects any of date format. Returns False otherwise
     """
-    pass
-
+    # Define the regular expression pattern for date validation
+    pattern = r'^(0?[1-9]|[12][0-9]|3[01])([.\-/])(0?[1-9]|1[0-2])\2(20[0-9]{2}|2099)$'
+    
+    # Use the re.match function to check if the input matches the pattern
+    if re.match(pattern, date_input):
+        return True
+    else:
+        return False

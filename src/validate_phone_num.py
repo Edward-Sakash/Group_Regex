@@ -17,4 +17,11 @@ def validate_phone_num(phone_num_input):
     :param input: <str> The string input
     :return: True if phone number is valid else False
     """
-    pass
+    # Define the regular expression pattern for phone number validation
+    pattern = r'^\+\d{1,3}\s\(\d{1,3}\)\s\d{3}\s\d{4}$'
+    
+    # Use the re.match function to check if the input matches the pattern
+    if re.match(pattern, phone_num_input):
+        return True
+    else:
+        return False

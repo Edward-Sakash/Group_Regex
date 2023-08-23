@@ -1,6 +1,5 @@
 import re
 
-
 def validate_email(email_input):
     """
     Email validation rules:
@@ -15,6 +14,10 @@ def validate_email(email_input):
     :param email_input: <str> The string to be checked
     :return: True if email_input respects the email format. Returns False otherwise
     """
-    pass
-
-
+    pattern = r'^[a-zA-Z][a-zA-Z0-9_.-]*@[a-zA-Z0-9_.-]+\.[a-zA-Z]{2,5}$'
+    
+    if re.match(pattern, email_input):
+        return True
+    else:
+        return False
+    
