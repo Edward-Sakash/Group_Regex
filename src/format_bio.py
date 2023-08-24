@@ -2,14 +2,15 @@ import re
 
 def format_bio(bio_input):
     """
+    Formats the input bio according to specific rules:
     * If it starts with a letter, it must be an uppercase.
     * If there are consecutive multiple spaces, they must be reduced to one space.
-    * Each sentence must start with a capital letter, but the case of the rest of the sentence mustn't be modified. Therefore, you can't use the method `capitalize()`.
-    * After the dot '.'  marking the end of a sentence, there must be a space before the following sentence.
+    * Each sentence must start with a capital letter, but the case of the rest of the sentence mustn't be modified.
+    * After the dot '.' marking the end of a sentence, there must be a space before the following sentence.
     * If there are multiple dots '.' in a row, they mustn't be changed.
     * Remove the trailing spaces in the beginning and the end of the bio.
 
-    :param bio_input:
+    :param bio_input: The input bio to be formatted
     :return: A formatted bio respecting the conditions above
     """
     # Remove trailing spaces at the beginning and end of the bio
@@ -23,7 +24,8 @@ def format_bio(bio_input):
     bio_input = re.sub(r'\s+', ' ', bio_input)
     
     # Use regex to find sentences and capitalize the first letter of the first word in each sentence
-    sentences = re.split(r'(?<=[.!?])\s+', bio_input)
+    sentence_endings = r'(?<=[.!?])\s+'  # Regex to match sentence endings with possible following spaces
+    sentences = re.split(sentence_endings, bio_input)
     formatted_sentences = [sentence[0].capitalize() + sentence[1:] for sentence in sentences]
     
     # Join the sentences and add spaces after dots

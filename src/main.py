@@ -1,9 +1,10 @@
 from format_bio import format_bio
 from validate_email import validate_email
 from validate_password import validate_password
-
+from validate_phone_num import validate_phone_num
 
 def add_user():
+    name = input("User's name: ")
     email = input("User's email: ")
     if not validate_email(email):
         print("Error: The email is not valid")
@@ -14,8 +15,7 @@ def add_user():
         return False
     bio = input("Add bio:\n")
     bio = format_bio(bio)
-    return email, psswd, bio
-
+    return name, email, psswd, bio
 
 if __name__ == "__main__":
     records = []
@@ -35,9 +35,10 @@ if __name__ == "__main__":
         elif ch == "2":
             print("List of users:")
             for record in records:
-                print("Email:", record[0])
-                print("Password:", record[1])
-                print("Bio:\n" + record[2])
+                print("Name:", record[0])
+                print("Email:", record[1])
+                print("Password:", record[2])
+                print("Bio:\n" + record[3])
                 print("---------------------")
 
         elif ch == "0":

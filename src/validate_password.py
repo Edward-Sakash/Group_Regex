@@ -13,13 +13,10 @@ def validate_password(pwd_input):
     :param pwd_input:
     :return: True if the pwd_input respect the pattern, False otherwise
     """
-    pattern = r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[*!\-_.])[A-Za-z\d*!\-_.]{8,30}$'
+    pattern = r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[*!\-_.]).{8,30}$'
     
     if re.match(pattern, pwd_input):
         return True
     else:
         print("Password requirements not met. Please ensure your password follows the rules.")
         return False
-
-
-
